@@ -9,9 +9,8 @@ use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class PrometheusExporterServiceProvider extends PackageServiceProvider
 {
-
     public array $routeFileNames = [
-        'web'
+        'web',
     ];
 
     public function configurePackage(Package $package): void

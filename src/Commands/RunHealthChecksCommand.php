@@ -12,7 +12,6 @@ use Koeeru\PrometheusExporter\Exceptions\CheckDidNotComplete;
 use Koeeru\PrometheusExporter\PrometheusExporter;
 use Koeeru\PrometheusExporter\ResultStores\ResultStore;
 
-
 class RunHealthChecksCommand extends Command
 {
     protected $signature = 'health:check';
@@ -56,7 +55,6 @@ class RunHealthChecksCommand extends Command
             ->endedAt(now());
 
         $this->outputResult($result, $exception ?? null);
-
 
         return $result;
     }
