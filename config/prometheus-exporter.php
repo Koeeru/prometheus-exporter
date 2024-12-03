@@ -2,7 +2,7 @@
 
 // config for Koeeru/PrometheusExporter
 return [
-    'metric_prefix' => 'cdp',
+    'metric_prefix' => config('app.name'),
     'metrics' => [
         'defaults' => [
             \Koeeru\PrometheusExporter\Checks\Checks\DatabaseCheck::class,
@@ -15,6 +15,7 @@ return [
             \Koeeru\PrometheusExporter\Checks\Checks\CpuLoadCheck::class,
         ],
         'get_ping_checks' => [
+            '/'
         ],
         'post_ping_checks' => [
 

@@ -18,12 +18,13 @@ class HealthCheckController
         }
 
         $checkResults = $resultStore->latestResults();
+        $storedCheckResults = $checkResults?->storedCheckResults ?? [];
 
         $result = '';
 
-        foreach ($checkResults->storedCheckResults as $checkResult) {
+        foreach ($storedCheckResults as $checkResult) {
             $result .= "# HELP {$checkResult->name}\n";
-            $result .= config('health.metric_prefix', 'service').'_'.Str::snake($checkResult->name).'_healthy_status: '.CheckResultStatus::fromName(Str::upper($checkResult->status))->value."\n";
+            $result .= config('prometheus-exporter.metric_prefix', 'service').'_'.Str::snake($checkResult->name).'_healthy_status: '.CheckResultStatus::fromName(Str::upper($checkResult->status))->value."\n";
         }
 
         return response($result, config('health.json_results_failure_status', 200))
