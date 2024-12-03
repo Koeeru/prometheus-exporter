@@ -1,6 +1,6 @@
 <?php
 
-namespace Koeeru\PrometheusExporter\Http;
+namespace Koeeru\PrometheusExporter\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
@@ -13,7 +13,7 @@ class HealthCheckController
 {
     public function __invoke(Request $request, ResultStore $resultStore): \Illuminate\Http\Response
     {
-        if ($request->has('fresh') || config('health.oh_dear_endpoint.always_send_fresh_results')) {
+        if ($request->has('fresh')) {
             Artisan::call(RunHealthChecksCommand::class);
         }
 

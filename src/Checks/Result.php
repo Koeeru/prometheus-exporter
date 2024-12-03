@@ -41,7 +41,7 @@ class Result
             return $this->shortSummary;
         }
 
-        return Str::of($this->status)->snake()->replace('_', ' ')->title();
+        return Str::of($this->status->value)->snake()->replace('_', ' ')->title();
     }
 
     public function check(Check $check): self
