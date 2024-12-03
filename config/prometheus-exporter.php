@@ -15,7 +15,7 @@ return [
             \Koeeru\PrometheusExporter\Checks\Checks\CpuLoadCheck::class,
         ],
         'get_ping_checks' => [
-            '/'
+            '/',
         ],
         'post_ping_checks' => [
 
