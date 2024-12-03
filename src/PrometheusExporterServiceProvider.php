@@ -12,7 +12,6 @@ use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class PrometheusExporterServiceProvider extends PackageServiceProvider
 {
-
     public function configurePackage(Package $package): void
     {
         $package
