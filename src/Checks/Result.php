@@ -11,7 +11,9 @@ use function trans;
 class Result
 {
     /** @var array<string, string|int|bool> */
-    public array $meta = [];
+    public array $meta = [
+        'type' => 'services'
+    ];
 
     public Check $check;
 
@@ -98,7 +100,7 @@ class Result
     /** @param  array<string, mixed>  $meta */
     public function meta(array $meta): self
     {
-        $this->meta = $meta;
+        $this->meta = array_merge($this->meta, $meta);
 
         return $this;
     }

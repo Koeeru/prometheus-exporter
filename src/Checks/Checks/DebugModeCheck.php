@@ -24,6 +24,7 @@ class DebugModeCheck extends Check
 
         $result = Result::make()
             ->meta([
+                'handle' => 'environment',
                 'actual' => $actual,
                 'expected' => $this->expected,
             ])

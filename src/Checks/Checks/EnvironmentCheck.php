@@ -24,6 +24,7 @@ class EnvironmentCheck extends Check
 
         $result = Result::make()
             ->meta([
+                'handle' => app()->environment(),
                 'actual' => $actualEnvironment,
                 'expected' => $this->expectedEnvironment,
             ])

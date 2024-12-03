@@ -24,7 +24,7 @@ class CacheCheck extends Check
         $driver = $this->driver ?? $this->defaultDriver();
 
         $result = Result::make()->meta([
-            'driver' => $driver,
+            'handler' => $driver,
         ]);
 
         try {

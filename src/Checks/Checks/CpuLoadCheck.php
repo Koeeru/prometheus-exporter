@@ -41,6 +41,9 @@ class CpuLoadCheck extends Check
         $cpuLoad = $this->measureCpuLoad();
 
         $result = Result::make()
+            ->meta([
+                'handler' => 'cpu_load',
+            ])
             ->ok()
             ->shortSummary(
                 "{$cpuLoad->lastMinute} {$cpuLoad->last5Minutes} {$cpuLoad->last15Minutes}"

@@ -33,6 +33,9 @@ class DatabaseSizeCheck extends Check
 
         $result = Result::make()
             ->meta([
+                'handler' => $this->connectionName ?? $this->getDefaultConnectionName(),
+            ])
+            ->meta([
                 'database_size' => $databaseSizeInGb,
             ])
             ->shortSummary("{$databaseSizeInGb} GB");

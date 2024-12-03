@@ -44,7 +44,7 @@ class RedisMemoryUsageCheck extends Check
         $result = Result::make()->shortSummary("{$memoryUsage} MB used");
 
         $result->meta([
-            'connection_name' => $this->connectionName,
+            'handler' => $this->connectionName,
             'memory_usage' => $memoryUsage,
         ]);
 

@@ -66,7 +66,7 @@ class PrometheusExporterServiceProvider extends PackageServiceProvider
 
             return PingCheck::new()
                 ->url($basePath.$url)
-                ->name($url)
+                ->name('Ping '.$url)
                 ->method($method);
         }, $urls);
     }

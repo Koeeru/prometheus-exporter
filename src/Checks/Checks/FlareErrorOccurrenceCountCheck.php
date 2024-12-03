@@ -61,6 +61,9 @@ class FlareErrorOccurrenceCountCheck extends Check
         $shortSummary = $errorOccurrenceCount.' '.Str::plural('error', $errorOccurrenceCount)." in past {$this->periodInMinutes} minutes";
 
         $result = Result::make()
+            ->meta([
+                'handler' => 'flare',
+            ])
             ->ok()
             ->meta([
                 'count' => $errorOccurrenceCount,

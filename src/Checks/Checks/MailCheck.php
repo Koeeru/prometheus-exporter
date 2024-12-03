@@ -11,7 +11,7 @@ class MailCheck extends Check
     public function run(): Result
     {
         $result = Result::make()->meta([
-            'connection_name' => 'SMTP',
+            'handler' => 'smtp',
         ]);
 
         try {

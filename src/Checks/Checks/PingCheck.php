@@ -6,7 +6,7 @@ use Exception;
 use Illuminate\Support\Facades\Http;
 use Koeeru\PrometheusExporter\Checks\Check;
 use Koeeru\PrometheusExporter\Checks\Result;
-use Spatie\Health\Exceptions\InvalidCheck;
+use Koeeru\PrometheusExporter\Exceptions\InvalidCheck;
 
 class PingCheck extends Check
 {
@@ -91,6 +91,10 @@ class PingCheck extends Check
         }
 
         return Result::make()
+            ->meta([
+                'type' => 'http',
+                'handler' => parse_url($this->url, PHP_URL_PATH)
+            ])
             ->ok()
             ->shortSummary('Reachable');
     }

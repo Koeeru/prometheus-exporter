@@ -23,7 +23,7 @@ class DatabaseCheck extends Check
         $connectionName = $this->connectionName ?? $this->getDefaultConnectionName();
 
         $result = Result::make()->meta([
-            'connection_name' => $connectionName,
+            'handler' => $connectionName,
         ]);
 
         try {

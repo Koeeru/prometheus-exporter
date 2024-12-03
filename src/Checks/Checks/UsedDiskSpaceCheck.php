@@ -41,7 +41,7 @@ class UsedDiskSpaceCheck extends Check
         $diskSpaceUsedPercentage = $this->getDiskUsagePercentage();
 
         $result = Result::make()
-            ->meta(['disk_space_used_percentage' => $diskSpaceUsedPercentage])
+            ->meta(['disk_space_used_percentage' => $diskSpaceUsedPercentage, 'handler' => 'used_disk_space'])
             ->shortSummary($diskSpaceUsedPercentage.'%');
 
         if ($diskSpaceUsedPercentage > $this->errorThreshold) {

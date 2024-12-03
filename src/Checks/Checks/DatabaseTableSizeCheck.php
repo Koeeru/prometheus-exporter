@@ -47,6 +47,9 @@ class DatabaseTableSizeCheck extends Check
 
         if ($tooBigTables->isEmpty()) {
             return $result
+                ->meta([
+                    'handler' => $this->connectionName ?? $this->getDefaultConnectionName(),
+                ])
                 ->ok()
                 ->shortSummary('Table sizes are ok');
         }

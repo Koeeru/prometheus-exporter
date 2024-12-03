@@ -44,6 +44,9 @@ class DatabaseConnectionCountCheck extends Check
         $shortSummary = $connectionCount.' '.Str::plural('connection', $connectionCount);
 
         $result = Result::make()
+            ->meta([
+                'handler' => $this->connectionName ?? $this->getDefaultConnectionName(),
+            ])
             ->ok()
             ->meta(['connection_count' => $connectionCount])
             ->shortSummary($shortSummary);
