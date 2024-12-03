@@ -9,6 +9,19 @@ This is where your description should go. Limit it to a paragraph or two. Consid
 
 ## Installation
 
+Update composer.json
+
+```json
+{
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/Koeeru/prometheus-exporter"
+    }
+  ]
+}
+```
+
 You can install the package via composer:
 
 ```bash
