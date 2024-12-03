@@ -24,30 +24,28 @@ class HealthCheckController
 
         foreach ($storedCheckResults as $checkResult) {
             $type = $checkResult->meta['type'] === 'services' ? Str::snake($checkResult->name) : 'http';
-            $result .= config('prometheus-exporter.metric_prefix', 'service') . '_';
+            $result .= config('prometheus-exporter.metric_prefix', 'service').'_';
             $result .= $type.'_health_status';
 
             $handler = '';
 
-            if($checkResult->meta['type'] === 'http' && count($checkResult->meta) > 1) {
+            if ($checkResult->meta['type'] === 'http' && count($checkResult->meta) > 1) {
                 $labels = [];
 
                 foreach ($checkResult->meta as $key => $value) {
-                    if($key !== 'type') {
+                    if ($key !== 'type') {
                         $labels[] = $key.'="'.$value.'"';
                     }
                 }
-                $handler = "{".implode(',', $labels)."}";
+                $handler = '{'.implode(',', $labels).'}';
             }
             $result .= $handler;
 
-
-
-//            $result .= json_encode(array_filter($checkResult->meta, fn($key) => $key !== 'type'), ARRAY_FILTER_USE_KEY);
+            //            $result .= json_encode(array_filter($checkResult->meta, fn($key) => $key !== 'type'), ARRAY_FILTER_USE_KEY);
 
             $result .= ' '.CheckResultStatus::fromName(Str::upper($checkResult->status))->value."\n";
-//            dd($result);
-//            $result .= config('prometheus-exporter.metric_prefix', 'service').'_'.Str::snake($checkResult->name).'_healthy_status: '.CheckResultStatus::fromName(Str::upper($checkResult->status))->value."\n";
+            //            dd($result);
+            //            $result .= config('prometheus-exporter.metric_prefix', 'service').'_'.Str::snake($checkResult->name).'_healthy_status: '.CheckResultStatus::fromName(Str::upper($checkResult->status))->value."\n";
         }
 
         return response($result, config('health.json_results_failure_status', 200))

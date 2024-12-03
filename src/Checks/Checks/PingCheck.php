@@ -93,7 +93,7 @@ class PingCheck extends Check
         return Result::make()
             ->meta([
                 'type' => 'http',
-                'handler' => parse_url($this->url, PHP_URL_PATH)
+                'handler' => parse_url($this->url, PHP_URL_PATH),
             ])
             ->ok()
             ->shortSummary('Reachable');

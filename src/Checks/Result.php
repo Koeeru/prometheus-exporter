@@ -12,7 +12,7 @@ class Result
 {
     /** @var array<string, string|int|bool> */
     public array $meta = [
-        'type' => 'services'
+        'type' => 'services',
     ];
 
     public Check $check;
