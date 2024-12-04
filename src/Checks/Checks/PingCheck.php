@@ -102,6 +102,10 @@ class PingCheck extends Check
     protected function failedResult(): Result
     {
         return Result::make()
+            ->meta([
+                'type' => 'http',
+                'handler' => parse_url($this->url, PHP_URL_PATH)
+            ])
             ->failed()
             ->shortSummary('Unreachable')
             ->notificationMessage($this->failureMessage ?? "Pinging {$this->getName()} failed.");
